@@ -63,15 +63,20 @@ async function init() {
 		await api.getUser(readmefile.accountname).then(function (result) {
 			readmefile.image = result.data.avatar_url;
 			readmefile.name = result.data.name;
-		});
-
-function writeToFile(fileName, data) {
+        });
+        const mdfile = generateMarkdown(readmefile);
+		await writeFileAsync("./README.md", mdfile);
+		console.log("README.md created");
+	} catch (err) {
+		console.log("Error: " + err);
+	}
 }
+
+// function writeToFile(fileName, data) {
+// }
 
 // function to initialize program
-function init() {
 
-}
 
 // function call to initialize program
 init();
