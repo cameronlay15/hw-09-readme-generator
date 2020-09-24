@@ -56,7 +56,14 @@ function askUser() {
 		},
 	]);
 }
-
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+async function init() {
+	try {
+		const readmefile = await askUser();
+		await api.getUser(readmefile.accountname).then(function (result) {
+			readmefile.image = result.data.avatar_url;
+			readmefile.name = result.data.name;
+		});
 
 function writeToFile(fileName, data) {
 }
