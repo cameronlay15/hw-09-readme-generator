@@ -1,7 +1,8 @@
-// array of questions for user
-const questions = [
-
-];
+const fs = require("fs");
+const util = require("util");
+const inquirer = require("inquirer");
+const api = require("./api.js");
+const generateMarkdown = require("./generateMarkdown.js");
 
 // function to write README file
 function writeToFile(fileName, data) {
